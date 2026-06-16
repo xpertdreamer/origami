@@ -7,15 +7,20 @@ CC=gcc
 CFLAGS=-g -Wall
 TARGET=origami
 
+BUILD_DIR=build
+OUTPUT=$(BUILD_DIR)/$(TARGET)
 SRCS=$(wildcard *.c)
 
-all: $(TARGET)
+all: $(OUTPUT)
 
-$(TARGET): $(SRCS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRCS)
+$(OUTPUT): $(SRCS) | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -o $(OUTPUT) $(SRCS)
+
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
 
 clean:
-	rm -f $(TARGET)
+	rm -rf $(BUILD_DIR)
 
 .PHONY: all clean
 # end
