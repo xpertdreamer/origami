@@ -1,5 +1,6 @@
 *.log
 tmp/
+build/
 
 # Created by https://www.gitignore.io/api/c,c++,cmake
 
