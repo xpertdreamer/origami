@@ -7,7 +7,6 @@
 // but i kinda like it and think that this is pretty comfortable to know that
 // i have all functions in the separate file
 
-
 #ifndef TREE_H_
 #define TREE_H_
 
@@ -48,14 +47,18 @@ typedef struct tnode
   // Here it is. Based on pathes:
   // A = { a, b, c} = { 10, 0, 11 }
   // Its optimal coding, Huffman proved it.
-  tnode *left, *right;
+  struct tnode *left, *right;
 } Treenode;
 
 // Collection of Huffman tree nodes also often called min-heap
-struct Tree {
+struct Tree
+{
     // TODO: provide a documentation
     unsigned int size;
     unsigned int capacity;
+    // Actually, it`s not the heap in the standard sense, but in our terminlogy
+    // it is called that way.
+    // It more like a binary tree?
     Treenode **heap;
 };
 
