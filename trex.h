@@ -1,5 +1,7 @@
 // trex.h
 // Please, read the comments inside the 'tree.h'.
+// While writing I realised that tree can be builded on priority queue
+// Maybe little later I`ll rewrite entire module
 // TODO: provide documentation
 
 #ifndef TREX_H_
@@ -23,4 +25,19 @@ _Bool isLeaf(Treenode *rootNode);
 // be dinamically allocatable
 struct Tree* initTree(unsigned int capacity);
 // ..
+void insertNode(struct Tree *tree, Treenode *node);
+// ..
+void heapify(struct Tree *tree, int index);
+// ..
+Treenode *extractMinimum(struct Tree *tree);
+// ..
+struct Tree *buildHeap(char *data, int *frequencys, int initialSize);
+// ..
+Treenode *buildTree(char *data, int *frequencys, int initialSize);
+// ..
+void code(char *data, int *frequencys, int initialSize);
+// ..
+void printCodes(Treenode *root, int *array, int top);
+// ..
+int getHeight(Treenode* root);
 #endif // TREX_H_
