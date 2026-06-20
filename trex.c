@@ -99,6 +99,7 @@ Treenode *extractMinimum(struct Tree *tree)
   #endif
   tree->heap[0] = tree->heap[tree->size - 1];
   tree->size--;
+  printf("Call heapify\n");
   heapify(tree, 0);
   return minimum;
 }
