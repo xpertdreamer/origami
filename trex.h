@@ -39,5 +39,5 @@ void code(char *data, int *frequencys, int initialSize);
 // ..
 void printCodes(Treenode *root, int *array, int top);
 // ..
-int getHeight(Treenode* root);
+int getHeight(Treenode *root);
 #endif // TREX_H_

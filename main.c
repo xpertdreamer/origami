@@ -3,13 +3,9 @@
 
 int main(int argc, char** argv) {
    Parsed count = { 0 };
-   int opt = getopt(argc, argv, "hf:a:");
-   if (opt == -1) {
-       printHelp();
-       return 0;
-   }
+   int opt;
        
-   while (opt != -1)
+   while ((opt = getopt(argc, argv, "hf:a:")) != -1)
    {
        switch(opt)
        {
@@ -29,6 +25,8 @@ int main(int argc, char** argv) {
            }
        }
    }
+
+   if (optind == 1) printHelp();
 
         /* char sym[] = {'a', 'b', 'c', 'd', 'e', 'v'}; */
         /* int freq[] = {60, 5, 30, 5, 45, 0}; */

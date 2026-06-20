@@ -1,7 +1,9 @@
 #include "trex.h"
+#include "io.h"
 #include "stdlib.h"
 #include "stdio.h"
 #include "proj.h"
+#include "string.h"
 
 // Small function allocating a new node of tree with given character and
 // frequency
@@ -82,6 +84,19 @@ void heapify(struct Tree *tree, int index)
 Treenode *extractMinimum(struct Tree *tree)
 {
   Treenode *minimum = tree->heap[0];
+  #ifdef DEBUG
+      if (tree == NULL) {
+        printf("Tree is NULL\n");
+    }
+    printf("Tree size: %d, capacity: %d\n", tree->size, tree->capacity);
+    for (int i = 0; i < tree->size; i++) {
+        if (tree->heap[i] != NULL) {
+            printf("heap[%d]: char='%c', freq=%u\n", i, tree->heap[i]->data, tree->heap[i]->freq);
+        } else {
+            printf("heap[%d]: NULL\n", i);
+        }
+    }
+  #endif
   tree->heap[0] = tree->heap[tree->size - 1];
   tree->size--;
   heapify(tree, 0);
@@ -132,9 +147,9 @@ Treenode *buildTree(char *data, int *frequencys, int initialSize)
 void code(char *data, int *frequencys, int initialSize)
 {
   Treenode *root = buildTree(data, frequencys, initialSize);
+  #ifdef DEBUG
   int array[getHeight(root)];
   int top = 0;
-  #ifdef DEBUG
   printCodes(root, array, top);
   #endif
 }
@@ -160,7 +175,7 @@ void printCodes(Treenode *root, int *array, int top)
         printf("%d", array[i]);
     }
     printf("\n");
-  }    
+  }
 }
 
 // ..
