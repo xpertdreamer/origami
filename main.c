@@ -3,9 +3,13 @@
 
 int main(int argc, char** argv) {
    Parsed count = { 0 };
-   int opt;
-
-   while ((opt = getopt(argc, argv, "hf:a:")) != -1)
+   int opt = getopt(argc, argv, "hf:a:");
+   if (opt == -1) {
+       printHelp();
+       return 0;
+   }
+       
+   while (opt != -1)
    {
        switch(opt)
        {
