@@ -29,7 +29,7 @@ _Bool parse(char *inputName, Parsed count)
    return 0;
 }
 
-// ..
+//..
 _Bool parseAndCompress(char *inputName, Parsed count)
 {
    FILE *input = fopen(inputName, "r");
@@ -38,6 +38,18 @@ _Bool parseAndCompress(char *inputName, Parsed count)
        printf("Error occured while opening the file: %s", inputName);
        printf("Please, check the path and file availability");
        return 1;
+   }
+   if (fseek(input, 0, SEEK_END) < 0) {
+        printf("Error occured while getting the file size: %s", inputName);
+        printf("Please, check the path and file availability");
+        fclose(input);
+        return 1;
+    }
+   long int seekRes = ftell(input);
+   if (seekRes < MIN_FILE_SIZE_BYTES) {
+       printf("File already pretty small");
+       fclose(input);
+       return 0;
    }
 
    int c;

@@ -6,6 +6,7 @@
 #define IO_H_
 
 #define COUNTBUF 256
+#define MIN_FILE_SIZE_BYTES 200
 #define VERSION 0.01
 
 #include <stdio.h>
